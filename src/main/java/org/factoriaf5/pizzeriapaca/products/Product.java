@@ -50,9 +50,30 @@ public class Product {
     @JoinTable(name = "order_product", joinColumns = @JoinColumn(name = "product_id"), 
     inverseJoinColumns = @JoinColumn(name = "order_id"))
     private Set<Order> orders = new HashSet<>();
+
+    private String fileUrl;
+    private String fileName;
+
+
     //Esto lo hay que revisar creo q esto iría en order y aqui:
     //@ManyToMany(mappedBy = "products")
     //private Set<Order> orders = new HashSet<>();
+
+    public String getFileUrl() {
+        return fileUrl;
+    }
+
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
     public Product() {
     }

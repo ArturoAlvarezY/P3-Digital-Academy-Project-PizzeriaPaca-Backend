@@ -3,7 +3,7 @@ package org.factoriaf5.pizzeriapaca.uploadimage.firebase.services;
 import java.io.IOException;
 import java.util.UUID;
 
-import org.factoriaf5.pizzeriapaca.uploadimage.firebase.models.FileRecord;
+import org.factoriaf5.pizzeriapaca.products.Product;
 import org.factoriaf5.pizzeriapaca.uploadimage.firebase.repository.FirebaseRepository;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,11 +32,12 @@ public class UploadService {
 
         String publicUrl = "https://storage.googleapis.com/" + bucket.getName() + "/" + blob.getName();
 
-        FileRecord fileRecord = new FileRecord();
+        Product fileRecord = new Product();
         fileRecord.setFileName(file.getOriginalFilename());
         fileRecord.setFileUrl(publicUrl);
-        fileRecord.setFileSize(file.getSize());
         repository.save(fileRecord);
+        
+        ///JUST NAME AND URL
 
         return publicUrl;
     }
